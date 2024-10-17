@@ -1,5 +1,13 @@
 #!/bin/bash
 
+# Guardar el input proporcionado como parámetro
+VLTCODE=$1
+
+# Verificar si se ha proporcionado un input
+if [ -n "$VLTCODE" ]; then
+    echo "El valor del input es: $VLTCODE"
+fi
+exit 1
 # Paso 1: Instalar git y curl si no están instalados
 echo "Verificando si git y curl están instalados..."
 
