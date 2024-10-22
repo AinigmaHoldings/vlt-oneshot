@@ -6,8 +6,11 @@ VLTCODE=$1
 # Verificar si se ha proporcionado un input
 if [ -n "$VLTCODE" ]; then
     echo "El valor del input es: $VLTCODE"
+else
+    echo "Error: VLT Code missing"
+    exit 1
 fi
-exit 1
+
 # Paso 1: Instalar git y curl si no están instalados
 echo "Verificando si git y curl están instalados..."
 
@@ -39,8 +42,8 @@ git clone $REPO_URL
 if [ -d "ahs-vlt-system" ]; then
   cd ahs-vlt-system
   if [ -f "install.sh" ]; then
-    echo "Ejecutando install.sh..."
-    bash install.sh
+    echo "Ejecutando install.sh con input: $VLTCODE"
+    bash install.sh $VLTCODE
   else
     echo "El archivo install.sh no se encuentra en el repositorio."
     exit 1
